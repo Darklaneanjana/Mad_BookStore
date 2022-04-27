@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "528896665341",
+    "firebase_url": "https://graymatter22-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "graymatter22",
+    "storage_bucket": "graymatter22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528896665341:android:ded9772096b7b3b6d60094",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528896665341-ffv302c1t25vafhn2g48q03fovp68noc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxTmOkZn9zV6KAfZUHdeXBxD_Gmo2nhF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528896665341-ffv302c1t25vafhn2g48q03fovp68noc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528896665341:android:bcbd5671fa25000ed60094",
+        "android_client_info": {
+          "package_name": "com.example.bookstore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528896665341-ffv302c1t25vafhn2g48q03fovp68noc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxTmOkZn9zV6KAfZUHdeXBxD_Gmo2nhF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528896665341-ffv302c1t25vafhn2g48q03fovp68noc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
