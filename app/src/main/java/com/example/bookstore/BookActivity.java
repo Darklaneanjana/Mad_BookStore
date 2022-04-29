@@ -19,7 +19,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 
 public class BookActivity extends AppCompatActivity {
-    private Button back;
     private static final String TAG = "EmailPassword";
 
 
@@ -51,7 +50,7 @@ public class BookActivity extends AppCompatActivity {
             }
         });
 
-        back = findViewById(R.id.backToBookList);
+        Button back = findViewById(R.id.backToBookList);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
