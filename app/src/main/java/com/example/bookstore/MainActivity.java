@@ -45,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
         Button logout = findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 finish();
                 Toast.makeText(MainActivity.this, "logout una.",
                         Toast.LENGTH_LONG).show();
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         Button testsenddata = findViewById(R.id.testsenddata);
         testsenddata.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 Map<String, Object> data = new HashMap<>();
                 data.put("name", "Tokyo");
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         Button testchangeIntent = findViewById(R.id.testchangeIntent);
         testchangeIntent.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 String bookId = "Lfuk2Z5AJxUExtIQlUoL";
                 Intent intent = new Intent(MainActivity.this, BookActivity.class);
                 intent.putExtra("bookId", bookId);
@@ -95,12 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
 
 
         BottomNavigationView navView = findViewById(R.id.nav_view);

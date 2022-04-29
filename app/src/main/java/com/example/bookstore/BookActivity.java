@@ -52,9 +52,9 @@ public class BookActivity extends AppCompatActivity {
         });
 
         back = findViewById(R.id.backToBookList);
-        back.setOnClickListener(new View.OnClickListener(){
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 finish();
             }
         });
