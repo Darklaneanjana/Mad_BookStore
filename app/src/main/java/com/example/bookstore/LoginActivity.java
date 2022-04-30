@@ -1,23 +1,22 @@
 package com.example.bookstore;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import android.widget.EditText;
-
 
 public class LoginActivity extends AppCompatActivity {
+    private static final String TAG = "EmailPassword";
     private EditText email;
     private EditText password;
-
-    private static final String TAG = "EmailPassword";
     // [START declare_auth]
     private FirebaseAuth mAuth;
     // [END declare_auth]
@@ -38,12 +37,12 @@ public class LoginActivity extends AppCompatActivity {
 
 
         Button toRegister = findViewById(R.id.toRegister);
-        toRegister.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this,RegisterActivity.class)));
+        toRegister.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
 
         login.setOnClickListener(v -> {
             String txtEmail = email.getText().toString();
             String txtPassword = password.getText().toString();
-            signIn(txtEmail,txtPassword);
+            signIn(txtEmail, txtPassword);
         });
 
     }
@@ -54,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
             reload();
         }
     }
@@ -87,7 +86,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    private void reload() { }
+    private void reload() {
+    }
 
     private void updateUI(FirebaseUser user) {
 
