@@ -5,19 +5,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -26,15 +22,14 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.bookstore.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
-    public static String bookId;
+public class HomeActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+    public static String bookId;
     private static final String TAG = "EmailPassword";
 
     @Override
@@ -44,18 +39,18 @@ public class MainActivity extends AppCompatActivity {
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
 
         Button logout = findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
                 finish();
-                Toast.makeText(MainActivity.this, "logout una.",
+                Toast.makeText(HomeActivity.this, "logout una.",
                         Toast.LENGTH_LONG).show();
 
             }
@@ -95,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String bookId = "Lfuk2Z5AJxUExtIQlUoL";
-                Intent intent = new Intent(MainActivity.this, BookActivity.class);
+                Intent intent = new Intent(HomeActivity.this, BookActivity.class);
                 intent.putExtra("bookId", bookId);
                 startActivity(intent);
 
@@ -113,5 +108,4 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
-
 }

@@ -2,21 +2,18 @@ package com.example.bookstore;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
 
 public class BookActivity extends AppCompatActivity {
     private static final String TAG = "EmailPassword";
@@ -25,12 +22,15 @@ public class BookActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_book);
 
-        Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.bookId);
-        TextView textView = findViewById(R.id.tempText);
 
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(HomeActivity.bookId);
+        TextView textView = findViewById(R.id.tempText);
 
         DocumentReference docRef = FirebaseFirestore.getInstance().collection("Books").document("Lfuk2Z5AJxUExtIQlUoL");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
