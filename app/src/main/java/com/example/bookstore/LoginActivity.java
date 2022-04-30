@@ -14,13 +14,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import android.text.TextUtils;
+
 import android.widget.EditText;
 
 
 public class LoginActivity extends AppCompatActivity {
-    private Button toRegister;
-    private Button login;
     private EditText email;
     private EditText password;
 
@@ -41,10 +39,10 @@ public class LoginActivity extends AppCompatActivity {
 
         email = findViewById(R.id.lEmail);
         password = findViewById(R.id.lPassword);
-        login = findViewById(R.id.lLogin);
+        Button login = findViewById(R.id.lLogin);
 
 
-        toRegister = findViewById(R.id.toRegister);
+        Button toRegister = findViewById(R.id.toRegister);
         toRegister.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -90,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.LENGTH_LONG).show();
 
                             updateUI(user);
-                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                             finish();
 
                         } else {
