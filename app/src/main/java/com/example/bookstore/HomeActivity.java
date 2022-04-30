@@ -3,16 +3,10 @@ package com.example.bookstore;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -21,14 +15,13 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.bookstore.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
     public static String bookId;
     private static final String TAG = "EmailPassword";
 
@@ -37,68 +30,49 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        com.example.bookstore.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
 
         Button logout = findViewById(R.id.logout);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
-                finish();
-                Toast.makeText(HomeActivity.this, "logout una.",
-                        Toast.LENGTH_LONG).show();
+        logout.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+            finish();
+            Toast.makeText(HomeActivity.this, "logout una.",
+                    Toast.LENGTH_LONG).show();
 
-            }
-        });
-
-        Button testsenddata = findViewById(R.id.testsenddata);
-        testsenddata.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                Map<String, Object> data = new HashMap<>();
-                data.put("name", "Tokyo");
-                data.put("country", "Japan");
-                // Add a new document with a generated id.
-
-                db.collection("Books")
-                        .add(data)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error adding document", e);
-                            }
-                        });
-
-            }
         });
 
 
-        Button testchangeIntent = findViewById(R.id.testchangeIntent);
-        testchangeIntent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String bookId = "Lfuk2Z5AJxUExtIQlUoL";
-                Intent intent = new Intent(HomeActivity.this, BookActivity.class);
-                intent.putExtra("bookId", bookId);
-                startActivity(intent);
+        Button testSendData = findViewById(R.id.testsenddata);
+        testSendData.setOnClickListener(v -> {
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            Map<String, Object> data = new HashMap<>();
+            data.put("name", "Tokyo");
+            data.put("country", "Japan");
+            // Add a new document with a generated id.
 
-            }
+            db.collection("Books")
+                    .add(data)
+                    .addOnSuccessListener(documentReference -> Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId()))
+                    .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+
         });
 
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        Button toBookOne = findViewById(R.id.testchangeIntent);
+        toBookOne.setOnClickListener(v -> {
+            String bookId = "Lfuk2Z5AJxUExtIQlUoL";
+            Intent intent = new Intent(HomeActivity.this, BookActivity.class);
+            intent.putExtra("bookId", bookId);
+            startActivity(intent);
+
+        });
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -108,4 +82,6 @@ public class HomeActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
+
+
 }
