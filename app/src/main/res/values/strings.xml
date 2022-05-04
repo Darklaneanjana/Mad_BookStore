@@ -14,4 +14,5 @@
     <string name="_0_0">0.0</string>
     <string name="book_title">Book Title</string>
     <string name="book_cover_image">Book Cover</string>
+    <string name="bookCoverImageDescription">BookCoverImage</string>
 </resources>
