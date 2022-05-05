@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
         toBookOne.setOnClickListener(v -> {
             String bookId = "Lfuk2Z5AJxUExtIQlUoL";
             Intent intent = new Intent(HomeActivity.this, BookActivity.class);
-            intent.putExtra(bookId, "Lfuk2Z5AJxUExtIQlUoL");
+            intent.putExtra("bookId", "Lfuk2Z5AJxUExtIQlUoL");
             startActivity(intent);
 
         });

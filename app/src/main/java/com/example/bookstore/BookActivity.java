@@ -43,7 +43,7 @@ public class BookActivity extends AppCompatActivity {
         TextView bookRating = findViewById(R.id.bookRating);
         TextView bookDescription = findViewById(R.id.bookDescription);
 
-        DocumentReference docRef = FirebaseFirestore.getInstance().collection("Books").document(bookId);
+        DocumentReference docRef = FirebaseFirestore.getInstance().collection("Books").document("Lfuk2Z5AJxUExtIQlUoL");
         docRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
