@@ -1,4 +1,4 @@
-package com.example.bookstore.ui.cart;
+package com.example.bookstore;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.bookstore.CartViewModel;
 import com.example.bookstore.databinding.FragmentCartBinding;
 
 public class CartFragment extends Fragment {

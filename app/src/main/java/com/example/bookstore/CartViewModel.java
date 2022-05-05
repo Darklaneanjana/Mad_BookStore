@@ -1,4 +1,4 @@
-package com.example.bookstore.ui.cart;
+package com.example.bookstore;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
