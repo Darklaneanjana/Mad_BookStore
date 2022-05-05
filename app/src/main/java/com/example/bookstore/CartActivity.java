@@ -12,6 +12,7 @@ import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -53,21 +54,27 @@ public class CartActivity extends AppCompatActivity {
                 }
 
 
-                for (DocumentChange doc : value.getDocumentChanges()) {
-                    if (doc.getType() == DocumentChange.type.ADDED) {
-                        CartArrayList.add(doc.getData().toObject(CartItem.class));
+//                for (DocumentChange doc : value.getDocumentChanges()) {
+//                    if (doc.getType() == DocumentChange.Type.ADDED) {
+//                        Log.d(TAG, "Current cites in CA: " + doc.getDocument().get("value"));
+//                        CartArrayList.add(doc.getDocument().toObject(CartItem.class));
+//                        Log.d(TAG, "list ekahode cites in CA: " + CartArrayList);
+//                    }
+//                    cartAdapter.notifyDataSetChanged();
+//                }
+                for (QueryDocumentSnapshot doc : value) {
+                    if (doc.get("Title") != null) {
+                        Log.d(TAG, "Current cites in CA: " + doc.get("value"));
+//                        CartArrayList.add(doc.data().toObject(CartItem.class));
+//                        CartArrayList.add(doc.data().toObject(CartItem.class)
 
                     }
                 }
-//                for (QueryDocumentSnapshot doc : value) {
-//                    if (doc.get("Title") != null) {
-//                        Log.d(TAG, "Current cites in CA: " + doc.getData());
-////                        CartArrayList.add(doc.getData().toObject(CartItem.class));
-////                                cities.add(doc.getString("name"));
-//                    }
-//                }
-//                        Log.d(TAG, "Current cites in CA: " + cities);
+                        Log.d(TAG, "Current cites in CA: " + CartArrayList);
             }
+
         });
+
+
     }
 }

@@ -65,7 +65,7 @@ public class HomeActivity extends AppCompatActivity {
 
         Button toCart = findViewById(R.id.testsenddata);
         toCart.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+            Intent intent = new Intent(HomeActivity.this, Main2Activity.class);
             startActivity(intent);
 
         });

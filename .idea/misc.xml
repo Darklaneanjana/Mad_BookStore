@@ -12,8 +12,9 @@
         <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/drawable/splash_image.xml" value="0.1" />
         <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/drawable/testImage_background.xml" value="0.2455" />
         <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/activity_book.xml" value="0.33" />
-        <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/activity_cart.xml" value="0.17699871740059855" />
+        <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/activity_cart.xml" value="0.1" />
         <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/activity_main2.xml" value="0.1" />
         <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/cart_items.xml" value="0.1876870457460453" />
         <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/cart_tems.xml" value="0.33" />
         <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/carttems.xml" value="0.1" />
@@ -24,6 +25,7 @@
         <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/fragment_notifications.xml" value="0.2830269345874305" />
         <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/fragment_second.xml" value="0.1569046601111586" />
         <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/item.xml" value="0.30312099187687047" />
+        <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/item9.xml" value="0.1" />
         <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/login.xml" value="0.25" />
         <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/layout/register.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/darklane/Desktop/Mad_BookStore/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20778110303548525" />
