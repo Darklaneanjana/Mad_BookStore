@@ -1,16 +1,25 @@
 package com.example.bookstore;
 
 public class CartItem {
-    String Title, Author;
+    String Title, Author, Image;
     long Price;
 
     public CartItem() {
     }
 
-    public CartItem(String title, String author, long price) {
+    public CartItem(String title, String author, String image, long price) {
         Title = title;
         Author = author;
+        Image = image;
         Price = price;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
     }
 
     public String getTitle() {

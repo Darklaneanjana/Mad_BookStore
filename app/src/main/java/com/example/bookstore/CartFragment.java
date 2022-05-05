@@ -1,29 +1,27 @@
 package com.example.bookstore;
 
-import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 public class CartFragment extends Fragment {
-    ProgressBar progressDialog;
     RecyclerView recyclerView;
     ArrayList<CartItem> CartArrayList;
     CartAdapter cartAdapter;
@@ -34,7 +32,7 @@ public class CartFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
 
         db = FirebaseFirestore.getInstance();
-        CartArrayList = new ArrayList<CartItem>();
+        CartArrayList = new ArrayList<>();
 
         recyclerView = view.findViewById(R.id.recyclerView1);
         cartAdapter = new CartAdapter(getContext(), CartArrayList);
@@ -48,23 +46,21 @@ public class CartFragment extends Fragment {
     }
 
     private void EventChangeListner() {
-        db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book").addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+        db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book").addSnapshotListener((value, error) -> {
 
-                if (error != null) {
-                    Log.e("Firestore Error", error.getMessage());
-                    return;
+            if (error != null) {
+                Log.e("Firestore Error", error.getMessage());
+                return;
+            }
+            for (DocumentChange dc : value.getDocumentChanges()) {
+                if (dc.getType() == DocumentChange.Type.ADDED) {
+                    CartArrayList.add(dc.getDocument().toObject(CartItem.class));
                 }
-                for (DocumentChange dc : value.getDocumentChanges()) {
-                    if (dc.getType() == DocumentChange.Type.ADDED) {
-                        CartArrayList.add(dc.getDocument().toObject(CartItem.class));
-                    }
-                    cartAdapter.notifyDataSetChanged();
-                }
+                cartAdapter.notifyDataSetChanged();
             }
         });
     }
+
 
 //    @Override
 //    public void onDestroyView() {

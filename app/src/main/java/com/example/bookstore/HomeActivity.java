@@ -59,12 +59,12 @@ public class HomeActivity extends AppCompatActivity {
 //        });
 
 
-        Button toCart = findViewById(R.id.testsenddata);
-        toCart.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, CartActivity.class);
-            startActivity(intent);
-
-        });
+//        Button toCart = findViewById(R.id.testsenddata);
+//        toCart.setOnClickListener(v -> {
+//            Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+//            startActivity(intent);
+//
+//        });
 
         Button toBookOne = findViewById(R.id.bookOneBtn);
         toBookOne.setOnClickListener(v -> {

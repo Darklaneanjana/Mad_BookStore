@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookStore">
         <activity
-            android:name=".CartActivity"
-            android:exported="false" />
-        <activity
             android:name=".BookActivity"
             android:exported="false" />
         <activity
