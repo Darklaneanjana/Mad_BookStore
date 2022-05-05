@@ -63,11 +63,11 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
-        Button toBookOne = findViewById(R.id.testchangeIntent);
+        Button toBookOne = findViewById(R.id.bookOneBtn);
         toBookOne.setOnClickListener(v -> {
             String bookId = "Lfuk2Z5AJxUExtIQlUoL";
             Intent intent = new Intent(HomeActivity.this, BookActivity.class);
-            intent.putExtra("bookId", bookId);
+            intent.putExtra("bookId", "Lfuk2Z5AJxUExtIQlUoL");
             startActivity(intent);
 
         });
