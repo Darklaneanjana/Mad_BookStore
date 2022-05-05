@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/navigation_cart"
         android:name="com.example.bookstore.ui.cart.CartFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_Cart"
         tools:layout="@layout/fragment_cart" />
 
     <fragment
