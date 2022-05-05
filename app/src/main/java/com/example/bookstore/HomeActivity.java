@@ -2,7 +2,6 @@ package com.example.bookstore;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
@@ -15,10 +14,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.bookstore.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
@@ -65,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
 
         Button toCart = findViewById(R.id.testsenddata);
         toCart.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, Main2Activity.class);
+            Intent intent = new Intent(HomeActivity.this, CartActivity.class);
             startActivity(intent);
 
         });
