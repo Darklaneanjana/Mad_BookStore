@@ -89,7 +89,7 @@ public class BookActivity extends AppCompatActivity {
         cartMap.put("Title", Objects.requireNonNull(document.getData().get("Title")).toString());
         cartMap.put("BookId", bookId);
         cartMap.put("Image", Objects.requireNonNull(document.getData().get("Image")).toString());
-        cartMap.put("Price", Objects.requireNonNull(document.getData().get("Price")).toString());
+        cartMap.put("price", Objects.requireNonNull(document.getData().get("Price")));
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book")

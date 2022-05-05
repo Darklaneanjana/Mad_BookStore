@@ -18,6 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 
 public class CartFragment extends Fragment {
+    private static final String TAG = "EmailPassword";
+
     RecyclerView recyclerView;
     ArrayList<CartItem> CartArrayList;
     CartAdapter cartAdapter;
@@ -30,6 +32,7 @@ public class CartFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         CartArrayList = new ArrayList<>();
 
+
         recyclerView = view.findViewById(R.id.recyclerView1);
         cartAdapter = new CartAdapter(getContext(), CartArrayList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -41,6 +44,7 @@ public class CartFragment extends Fragment {
 
     }
 
+
     private void EventChangeListner() {
         db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book").addSnapshotListener((value, error) -> {
 
@@ -49,8 +53,15 @@ public class CartFragment extends Fragment {
                 return;
             }
             for (DocumentChange dc : value.getDocumentChanges()) {
-                if (dc.getType() == DocumentChange.Type.ADDED) {
-                    CartArrayList.add(dc.getDocument().toObject(CartItem.class));
+//                Log.e("Firestore Error pakayooooo", dc.getDocument().getId());
+                String documentId = dc.getDocument().getId();
+
+                if (dc.getType() == DocumentChange.Type.ADDED ) {
+                    CartItem crt = dc.getDocument().toObject(CartItem.class);
+                    crt.setDocumentId(dc.getDocument().getId());
+                    CartArrayList.add(crt);
+
+
                 }
                 cartAdapter.notifyDataSetChanged();
             }

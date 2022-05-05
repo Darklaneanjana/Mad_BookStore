@@ -61,7 +61,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="@string/cart"
             android:textColor="#301F18"
-            android:textSize="34sp"
+            android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.629"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
@@ -155,6 +155,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginBottom="120dp"
         android:id="@+id/recyclerView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

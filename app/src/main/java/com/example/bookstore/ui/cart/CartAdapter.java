@@ -7,19 +7,25 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookstore.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> {
+    private static final String TAG = "EmailPassword";
     Context context;
     ArrayList<CartItem> CartArrayList;
 
@@ -41,6 +47,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         holder.Title.setText(cartItem.Title);
         holder.Author.setText(cartItem.Author);
         holder.Price.setText(String.valueOf(cartItem.Price));
+
+        holder.cartRemoveItem.setOnClickListener(view -> cartRemoveItem(cartItem.getDocumentId().toString()));
+
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Books/" + cartItem.Image);
         // ImageView in your Activity
         // [END storage_load_with_glide]
@@ -60,10 +69,30 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         return CartArrayList.size();
     }
 
+    public void cartRemoveItem(String id) {
+        FirebaseFirestore.getInstance().collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book").document(id)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully deleted!");
+                        notifyDataSetChanged();
+                        Toast.makeText(context,"The Book Successfully Deleted",Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error deleting document", e);
+                    }
+                });
+    }
+
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView Title, Author, Price;
         ImageView Image;
+        ImageButton cartRemoveItem;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,6 +100,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             Author = itemView.findViewById(R.id.cartItemAuthor);
             Price = itemView.findViewById(R.id.cartItemPrice);
             Image = (ImageView) itemView.findViewById(R.id.cartItemImage);
+            cartRemoveItem = itemView.findViewById(R.id.cartItemDelete);
         }
     }
 }
