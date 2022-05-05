@@ -1,10 +1,12 @@
 package com.example.bookstore;
 
 public class CartItem {
-    String Title,Author;
+    String Title, Author;
     long Price;
 
-    public CartItem(){}
+    public CartItem() {
+    }
+
     public CartItem(String title, String author, long price) {
         Title = title;
         Author = author;
