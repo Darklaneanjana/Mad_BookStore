@@ -15,4 +15,9 @@
     <string name="book_title">Book Title</string>
     <string name="book_cover_image">Book Cover</string>
     <string name="bookCoverImageDescription">BookCoverImage</string>
+    <string name="storeFrontLogo">StoreFrontLogo</string>
+    <string name="cart">Cart</string>
+    <string name="leftIcon">LeftIcon</string>
+    <string name="proceed_to_checkout">Proceed to Checkout</string>
+    <string name="cart_total">Total</string>
 </resources>
