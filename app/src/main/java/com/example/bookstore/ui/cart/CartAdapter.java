@@ -1,4 +1,4 @@
-package com.example.bookstore;
+package com.example.bookstore.ui.cart;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bookstore.R;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -48,7 +49,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             holder.Image.setImageBitmap(bitmap);
             // Data for "images/island.jpg" is returns, use this as needed
         }).addOnFailureListener(exception -> {
-            Log.e("Firestore Error", "ta hikenawa");
+            Log.e("Firestore Error", "ta lllll");
             // Handle any errors
         });
 

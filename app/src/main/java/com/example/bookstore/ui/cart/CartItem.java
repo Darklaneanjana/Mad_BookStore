@@ -1,4 +1,4 @@
-package com.example.bookstore;
+package com.example.bookstore.ui.cart;
 
 public class CartItem {
     String Title, Author, Image;

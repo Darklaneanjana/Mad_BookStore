@@ -43,34 +43,11 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
-//        Button testSendData = findViewById(R.id.testsenddata);
-//        testSendData.setOnClickListener(v -> {
-//            FirebaseFirestore db = FirebaseFirestore.getInstance();
-//            Map<String, Object> data = new HashMap<>();
-//            data.put("name", "Tokyo");
-//            data.put("country", "Japan");
-//            // Add a new document with a generated id.
-//
-//            db.collection("Books")
-//                    .add(data)
-//                    .addOnSuccessListener(documentReference -> Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId()))
-//                    .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
-//
-//        });
-
-
-//        Button toCart = findViewById(R.id.testsenddata);
-//        toCart.setOnClickListener(v -> {
-//            Intent intent = new Intent(HomeActivity.this, CartActivity.class);
-//            startActivity(intent);
-//
-//        });
-
         Button toBookOne = findViewById(R.id.bookOneBtn);
         toBookOne.setOnClickListener(v -> {
             String bookId = "Lfuk2Z5AJxUExtIQlUoL";
             Intent intent = new Intent(HomeActivity.this, BookActivity.class);
-            intent.putExtra("bookId", "Lfuk2Z5AJxUExtIQlUoL");
+            intent.putExtra("bookId", bookId);
             startActivity(intent);
 
         });
