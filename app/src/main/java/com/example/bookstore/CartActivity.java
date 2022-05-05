@@ -1,22 +1,20 @@
 package com.example.bookstore;
 
+import android.os.Bundle;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.util.Log;
-
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.Nullable;
 
@@ -26,7 +24,6 @@ public class CartActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<CartItem> CartArrayList;
     CartAdapter cartAdapter;
-
 
 
     @Override
@@ -44,25 +41,33 @@ public class CartActivity extends AppCompatActivity {
 
     }
 
-    public void loadCart(String bid){
+    public void loadCart(String bid) {
         CollectionReference docRef = FirebaseFirestore.getInstance().collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book");
         docRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value,
                                 @Nullable FirebaseFirestoreException e) {
-                        if (e != null) {
-                            Log.w(TAG, "Listen failed.", e);
-                            return;
-                        }
+                if (e != null) {
+                    Log.w(TAG, "Listen failed.", e);
+                    return;
+                }
 
-                        List<String> cities = new ArrayList<>();
-                        for (QueryDocumentSnapshot doc : value) {
-                            if (doc.get("name") != null) {
-                                cities.add(doc.getString("name"));
-                            }
-                        }
-                        Log.d(TAG, "Current cites in CA: " + cities);
+
+                for (DocumentChange doc : value.getDocumentChanges()) {
+                    if (doc.getType() == DocumentChange.type.ADDED) {
+                        CartArrayList.add(doc.getData().toObject(CartItem.class));
+
                     }
-                });
+                }
+//                for (QueryDocumentSnapshot doc : value) {
+//                    if (doc.get("Title") != null) {
+//                        Log.d(TAG, "Current cites in CA: " + doc.getData());
+////                        CartArrayList.add(doc.getData().toObject(CartItem.class));
+////                                cities.add(doc.getString("name"));
+//                    }
+//                }
+//                        Log.d(TAG, "Current cites in CA: " + cities);
+            }
+        });
     }
 }
