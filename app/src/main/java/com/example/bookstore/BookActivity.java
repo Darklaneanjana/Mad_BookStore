@@ -20,10 +20,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class BookActivity extends AppCompatActivity {
     private static final String TAG = "EmailPassword";
+    DocumentSnapshot document;
+    String bookId;
 
 
     @Override
@@ -36,17 +39,17 @@ public class BookActivity extends AppCompatActivity {
 
 //
         Intent intent = getIntent();
-        String bookId = intent.getStringExtra(HomeActivity.bookId);
+        bookId = intent.getStringExtra("bookId");
         TextView bookTitle = findViewById(R.id.bookTitle);
         TextView bookAuthor = findViewById(R.id.bookAuthor);
         TextView bookPrice = findViewById(R.id.bookPrice);
         TextView bookRating = findViewById(R.id.bookRating);
         TextView bookDescription = findViewById(R.id.bookDescription);
 
-        DocumentReference docRef = FirebaseFirestore.getInstance().collection("Books").document("Lfuk2Z5AJxUExtIQlUoL");
+        DocumentReference docRef = FirebaseFirestore.getInstance().collection("Books").document(bookId);
         docRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                DocumentSnapshot document = task.getResult();
+                document = task.getResult();
                 if (document.exists()) {
                     Log.d(TAG, "DocumentSnapshot data: " + Objects.requireNonNull(document.getData()));
 
@@ -66,12 +69,33 @@ public class BookActivity extends AppCompatActivity {
             }
         });
 
-        Button addToCartBtn = findViewById(R.id.addToCartBtn);
-        addToCartBtn.setOnClickListener(v -> finish());
+
         Button RentBtn = findViewById(R.id.RentBtn);
         RentBtn.setOnClickListener(v -> finish());
         ImageButton back = findViewById(R.id.backToBookList);
         back.setOnClickListener(v -> finish());
+
+
+        Button addToCartBtn = findViewById(R.id.addToCartBtn);
+        addToCartBtn.setOnClickListener(view -> addToCart());
+
+
+    }
+
+    private void addToCart() {
+
+        final HashMap<String, Object> cartMap = new HashMap<>();
+        cartMap.put("Author", Objects.requireNonNull(document.getData().get("Author")).toString());
+        cartMap.put("Title", Objects.requireNonNull(document.getData().get("Title")).toString());
+        cartMap.put("BookId", bookId);
+        cartMap.put("Image", Objects.requireNonNull(document.getData().get("Image")).toString());
+        cartMap.put("price", Objects.requireNonNull(document.getData().get("Price")));
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book")
+                .add(cartMap)
+                .addOnSuccessListener(documentReference -> Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId()))
+                .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
 
     }
 
@@ -89,4 +113,6 @@ public class BookActivity extends AppCompatActivity {
             // Handle any errors
         });
     }
+
+
 }

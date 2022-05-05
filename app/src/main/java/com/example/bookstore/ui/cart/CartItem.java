@@ -1,14 +1,33 @@
-package com.example.bookstore;
+package com.example.bookstore.ui.cart;
 
 public class CartItem {
-    String Title,Author;
+    String Title, Author, Image, documentId;
     long Price;
 
-    public CartItem(){}
-    public CartItem(String title, String author, long price) {
+    public CartItem() {
+    }
+
+    public CartItem(String title, String author, String image, long price) {
         Title = title;
         Author = author;
+        Image = image;
         Price = price;
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
     }
 
     public String getTitle() {
