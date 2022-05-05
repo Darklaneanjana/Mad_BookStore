@@ -34,11 +34,9 @@ public class BookActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_book);
 
-
+//
         Intent intent = getIntent();
         String bookId = intent.getStringExtra(HomeActivity.bookId);
-        Log.d(TAG, "Intent Data " + bookId);
-
         TextView bookTitle = findViewById(R.id.bookTitle);
         TextView bookAuthor = findViewById(R.id.bookAuthor);
         TextView bookPrice = findViewById(R.id.bookPrice);
@@ -57,6 +55,8 @@ public class BookActivity extends AppCompatActivity {
                     bookPrice.setText(Objects.requireNonNull(document.getData().get("Price")) + "0$");
                     bookRating.setText(Objects.requireNonNull(document.getData().get("Ratings")).toString());
                     bookDescription.setText(Objects.requireNonNull(document.getData().get("Description")).toString());
+
+
                     setCover(Objects.requireNonNull(document.getData().get("Image")).toString());
                 } else {
                     Log.d(TAG, "No such document");
