@@ -2,7 +2,6 @@ package com.example.bookstore;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
@@ -15,10 +14,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.bookstore.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
@@ -47,21 +43,28 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
-        Button testSendData = findViewById(R.id.testsenddata);
-        testSendData.setOnClickListener(v -> {
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            Map<String, Object> data = new HashMap<>();
-            data.put("name", "Tokyo");
-            data.put("country", "Japan");
-            // Add a new document with a generated id.
+//        Button testSendData = findViewById(R.id.testsenddata);
+//        testSendData.setOnClickListener(v -> {
+//            FirebaseFirestore db = FirebaseFirestore.getInstance();
+//            Map<String, Object> data = new HashMap<>();
+//            data.put("name", "Tokyo");
+//            data.put("country", "Japan");
+//            // Add a new document with a generated id.
+//
+//            db.collection("Books")
+//                    .add(data)
+//                    .addOnSuccessListener(documentReference -> Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId()))
+//                    .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+//
+//        });
 
-            db.collection("Books")
-                    .add(data)
-                    .addOnSuccessListener(documentReference -> Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId()))
-                    .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+
+        Button toCart = findViewById(R.id.testsenddata);
+        toCart.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+            startActivity(intent);
 
         });
-
 
         Button toBookOne = findViewById(R.id.bookOneBtn);
         toBookOne.setOnClickListener(v -> {
@@ -76,7 +79,7 @@ public class HomeActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+                R.id.navigation_home, R.id.navigation_cart, R.id.navigation_notifications)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
