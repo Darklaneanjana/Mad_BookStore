@@ -5,6 +5,9 @@
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     app:cardCornerRadius="8dp"
+    app:strokeWidth="2dp"
+    app:strokeColor="#553f51b5"
+    app:cardBackgroundColor="#eee"
     app:cardElevation="8dp">
 
 
@@ -13,53 +16,70 @@
         android:layout_height="125dp"
         android:backgroundTint="#66F3EEED">
 
-        <ImageView
-            android:id="@+id/cartItemImage"
-            android:layout_width="80dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="12dp"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cartItemImageHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            app:strokeWidth="2dp"
+            app:strokeColor="#553f51b5"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:contentDescription="@string/cartIconImage"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="8dp"
+            android:background="@drawable/layout_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.525" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/cartItemImage"
+                android:layout_width="wrap_content"
+                android:layout_height="105dp"
+                android:adjustViewBounds="true"
+
+                android:contentDescription="@string/cartIconImage"
+                app:layout_constraintVertical_bias="0.525" />
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/cartItemTitle"
             android:layout_width="205dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_bold"
             android:text="@string/cartItemTitle"
             android:textColor="#202020"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/cartItemImage"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@+id/cartItemImageHolder"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/cartItemAuthor"
+            android:fontFamily="@font/roboto_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
             android:text="@string/cartItemAuthor"
-            app:layout_constraintStart_toEndOf="@+id/cartItemImage"
+            app:layout_constraintStart_toEndOf="@+id/cartItemImageHolder"
             app:layout_constraintTop_toBottomOf="@+id/cartItemTitle" />
 
         <TextView
             android:id="@+id/cartItemPrice"
+            android:fontFamily="@font/roboto_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="16dp"
             android:text="@string/cartItemPrice"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cartItemImage" />
+            app:layout_constraintStart_toEndOf="@+id/cartItemImageHolder" />
 
 
         <ImageButton
+            android:tint="#755"
             android:id="@+id/cartItemDelete"
             android:layout_width="30dp"
             android:layout_height="30dp"

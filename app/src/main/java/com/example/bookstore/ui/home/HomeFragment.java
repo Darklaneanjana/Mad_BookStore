@@ -35,13 +35,26 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        Button textView2 = binding.bookTwoBtn;
+        textView2.setOnClickListener(v -> {
+            String bookId = "akW6ttqrKvS0ueyGopM2";
+            Intent intent = new Intent(getContext(), BookActivity.class);
+            intent.putExtra("bookId", bookId);
+            startActivity(intent);
+        });
+        Button textView3 = binding.bookThreeBtn;
+        textView3.setOnClickListener(v -> {
+            String bookId = "e2NkoHEWJe1lRn81myQn";
+            Intent intent = new Intent(getContext(), BookActivity.class);
+            intent.putExtra("bookId", bookId);
+            startActivity(intent);
+        });
+
+//        final TextView textView = binding.textHome;
+//        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         return root;
     }
-
-//    nav_host_fragment_activity_main
 
     @Override
     public void onDestroyView() {
