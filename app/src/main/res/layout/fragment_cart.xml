@@ -39,26 +39,29 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/cartItemCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="32dp"
-            android:text="+2"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="68dp"
+            android:elevation="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="2"
+            android:textColor="#644"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="30dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="40dp"
-            android:contentDescription="@string/storeFrontLogo"
-            android:src="@drawable/ic_baseline_storefront_24"
+            android:id="@+id/imageView"
+            android:layout_width="63dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="42dp"
+            android:src="@drawable/ic_baseline_cloud_queue_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="#432915" />
+            app:tint="#dd2f41a5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -66,7 +69,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/layout_bg"
-
+        app:strokeWidth="2dp"
+        app:strokeColor="#ffebee"
         app:cardCornerRadius="30dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -108,12 +112,12 @@
                 app:layout_constraintVertical_bias="0.238" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/cartTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/holo_red_dark"
                 android:fontFamily="@font/roboto_bold_italic"
-                android:text="64$"
+                android:text="00$"
                 android:textColor="#2C2C2C"
                 android:textSize="34sp"
                 app:layout_constraintEnd_toEndOf="parent"

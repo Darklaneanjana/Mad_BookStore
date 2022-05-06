@@ -55,7 +55,7 @@ public class BookActivity extends AppCompatActivity {
 
                     bookTitle.setText(Objects.requireNonNull(document.getData().get("Title")).toString());
                     bookAuthor.setText(Objects.requireNonNull(document.getData().get("Author")).toString());
-                    bookPrice.setText(Objects.requireNonNull(document.getData().get("Price")) + "0$");
+                    bookPrice.setText(Objects.requireNonNull(document.getData().get("Price")) + "$");
                     bookRating.setText(Objects.requireNonNull(document.getData().get("Ratings")).toString());
                     bookDescription.setText(Objects.requireNonNull(document.getData().get("Description")).toString());
 
