@@ -21,49 +21,20 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="27dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_baseline_chevron_left_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView4"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.90999997"
-                app:tint="#102461"
-                android:contentDescription="@string/leftIcon" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/back"
-                android:textColor="#102461"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.81" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="65dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="164dp"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/cart"
             android:textColor="#301F18"
-            android:textSize="40sp"
+            android:textSize="45sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.629"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,32 +54,32 @@
             android:layout_height="42dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="40dp"
+            android:contentDescription="@string/storeFrontLogo"
             android:src="@drawable/ic_baseline_storefront_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="#432915"
-            android:contentDescription="@string/storeFrontLogo" />
+            app:tint="#432915" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="40dp"
+        android:background="@drawable/layout_bg"
 
+        app:cardCornerRadius="30dp"
+        app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cardElevation="10dp"
-        android:background="@drawable/layout_bg"
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout5"
             android:layout_width="match_parent"
-            android:layout_height="162dp"
-            android:elevation="20dp"
+            android:layout_height="172dp"
             android:background="@drawable/layout_bg"
-            android:backgroundTint="#4ADFCBAD">
+            android:backgroundTint="#4ADFCBAD"
+            android:elevation="20dp">
 
             <TextView
                 android:id="@+id/textView"
@@ -155,11 +126,11 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginBottom="120dp"
         android:id="@+id/recyclerView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="120dp"
+        android:layout_marginBottom="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

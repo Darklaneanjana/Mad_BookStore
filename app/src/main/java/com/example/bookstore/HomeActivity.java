@@ -18,8 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
-    public static String bookId;
-    private static final String TAG = "EmailPassword";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +39,6 @@ public class HomeActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
 
         });
-
-
-//        Button toBookOne = findViewById(R.id.bookOneBtn);
-//        toBookOne.setOnClickListener(v -> {
-//            String bookId = "Lfuk2Z5AJxUExtIQlUoL";
-//            Intent intent = new Intent(HomeActivity.this, BookActivity.class);
-//            intent.putExtra("bookId", bookId);
-//            startActivity(intent);
-//
-//        });
-
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

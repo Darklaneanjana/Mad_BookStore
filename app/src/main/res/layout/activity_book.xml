@@ -24,7 +24,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:backgroundTint="#F4ECD6"
-        android:elevation="28dp"
+        android:elevation="10dp"
         android:background="@drawable/layout_bg"
         app:layout_constraintStart_toStartOf="parent">
 

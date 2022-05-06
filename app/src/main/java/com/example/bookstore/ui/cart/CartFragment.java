@@ -18,7 +18,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 
 public class CartFragment extends Fragment {
-    private static final String TAG = "EmailPassword";
 
     RecyclerView recyclerView;
     ArrayList<CartItem> CartArrayList;
@@ -39,39 +38,28 @@ public class CartFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(cartAdapter);
 
-        EventChangeListner();
+        EventChangeListener();
         return view;
 
     }
 
 
-    private void EventChangeListner() {
+    private void EventChangeListener() {
         db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book").addSnapshotListener((value, error) -> {
 
             if (error != null) {
                 Log.e("Firestore Error", error.getMessage());
                 return;
             }
+            assert value != null;
             for (DocumentChange dc : value.getDocumentChanges()) {
-//                Log.e("Firestore Error pakayooooo", dc.getDocument().getId());
-                String documentId = dc.getDocument().getId();
-
-                if (dc.getType() == DocumentChange.Type.ADDED ) {
+                if (dc.getType() == DocumentChange.Type.ADDED) {
                     CartItem crt = dc.getDocument().toObject(CartItem.class);
                     crt.setDocumentId(dc.getDocument().getId());
                     CartArrayList.add(crt);
-
-
                 }
                 cartAdapter.notifyDataSetChanged();
             }
         });
     }
-
-
-//    @Override
-//    public void onDestroyView() {
-//        super.onDestroyView();
-//        binding = null;
-//    }
 }

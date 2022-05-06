@@ -16,8 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookstore.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -46,9 +44,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         CartItem cartItem = CartArrayList.get(position);
         holder.Title.setText(cartItem.Title);
         holder.Author.setText(cartItem.Author);
-        holder.Price.setText(String.valueOf(cartItem.Price));
+        holder.Price.setText(String.valueOf(cartItem.Price)+"$");
 
-        holder.cartRemoveItem.setOnClickListener(view -> cartRemoveItem(cartItem.getDocumentId().toString()));
+        holder.cartRemoveItem.setOnClickListener(view -> cartRemoveItem(cartItem.getDocumentId()));
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Books/" + cartItem.Image);
         // ImageView in your Activity
@@ -58,10 +56,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             holder.Image.setImageBitmap(bitmap);
             // Data for "images/island.jpg" is returns, use this as needed
         }).addOnFailureListener(exception -> {
-            Log.e("Firestore Error", "ta lllll");
+            Log.e("Firestore Error", "Remove Item Failed");
             // Handle any errors
         });
-
     }
 
     @Override
@@ -72,20 +69,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     public void cartRemoveItem(String id) {
         FirebaseFirestore.getInstance().collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book").document(id)
                 .delete()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully deleted!");
-                        notifyDataSetChanged();
-                        Toast.makeText(context,"The Book Successfully Deleted",Toast.LENGTH_LONG).show();
-                    }
+                .addOnSuccessListener(aVoid -> {
+                    Log.d(TAG, "DocumentSnapshot successfully deleted!");
+                    notifyDataSetChanged();
+                    Toast.makeText(context, "The Book Successfully Removed from cart", Toast.LENGTH_LONG).show();
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error deleting document", e);
-                    }
-                });
+                .addOnFailureListener(e -> Log.w(TAG, "Error deleting document", e));
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -99,7 +88,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             Title = itemView.findViewById(R.id.cartItemTitle);
             Author = itemView.findViewById(R.id.cartItemAuthor);
             Price = itemView.findViewById(R.id.cartItemPrice);
-            Image = (ImageView) itemView.findViewById(R.id.cartItemImage);
+            Image = itemView.findViewById(R.id.cartItemImage);
             cartRemoveItem = itemView.findViewById(R.id.cartItemDelete);
         }
     }
