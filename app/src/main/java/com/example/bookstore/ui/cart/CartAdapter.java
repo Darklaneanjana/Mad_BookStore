@@ -75,9 +75,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     }
 
     private void incrementCartItem(String id, long count) {
+
         long countItem = count;
         if (countItem >= 10.0) {
-            Toast.makeText(context, "Must be more than one book", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Must be less than ten books", Toast.LENGTH_LONG).show();
         } else {
 
             countItem++;

@@ -99,19 +99,17 @@ public class BookActivity extends AppCompatActivity {
     private void addToCart() {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+        BookCount = 0;
         db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book")
-                .whereEqualTo("Title", "Dune")
+                .whereEqualTo("BookId", bookId)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             BookCount += 1;
-                            Log.e(TAG, "labba" + "labba");
                             Log.e(TAG, document.getId() + " => " + document.getData());
                         }
                         if (BookCount == 0) {
-                            Log.e(TAG, "pakaya" + "pakaya");
                             final HashMap<String, Object> cartMap = new HashMap<>();
                             cartMap.put("Author", Objects.requireNonNull(Objects.requireNonNull(document.getData()).get("Author")).toString());
                             cartMap.put("Title", Objects.requireNonNull(document.getData().get("Title")).toString());
@@ -129,7 +127,6 @@ public class BookActivity extends AppCompatActivity {
                                     })
                                     .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
                         } else {
-                            Log.e(TAG, "pakaya" + "pakaya");
                             Toast.makeText(this, "Book is already in the cart", Toast.LENGTH_LONG).show();
                         }
                     } else {

@@ -26,4 +26,6 @@
     <string name="cartItemAuthor">Author:</string>
     <string name="cartItemPrice">Price:</string>
     <string name="logout">logout</string>
+    <string name="minus">-</string>
+    <string name="add">+</string>
 </resources>
