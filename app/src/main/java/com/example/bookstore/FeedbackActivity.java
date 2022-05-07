@@ -5,25 +5,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+
 import com.google.firebase.firestore.FirebaseFirestore;
-//import com.google.firebase.ktx.Firebase;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 public class FeedbackActivity extends AppCompatActivity {
     private static final String TAG = "Name";
-    private EditText name,email,message;
-    private Button send, details;
-    DocumentSnapshot document;
-    String feedbackId;
-   // private Firebase firestore;
-
+    private EditText name, email, message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +25,7 @@ public class FeedbackActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         message = findViewById(R.id.message);
 
-        send = findViewById(R.id.btn_send);
-        details = findViewById(R.id.btn_details);
+        Button send = findViewById(R.id.btn_send);
         //Firebase.setAndroidContext(this);
 
         send.setOnClickListener(new View.OnClickListener() {
@@ -45,24 +36,28 @@ public class FeedbackActivity extends AppCompatActivity {
                 String txtMessage = message.getText().toString();
 
                 Button btn_send = findViewById(R.id.btn_send);
-                btn_send.setOnClickListener(view -> addToFeedback());
+                btn_send.setOnClickListener(view -> addToFeedback(txtName, txtEmail, txtMessage));
             }
 
         });
     }
-        private void addToFeedback(){
 
-            final HashMap<String, Object> feedbackMap = new HashMap<>();
-            feedbackMap.put("Name",Objects.requireNonNull(document.getData().get("Name")).toString());
-            feedbackMap.put("Email",Objects.requireNonNull(document.getData().get("Email")).toString());
-            feedbackMap.put("Message",Objects.requireNonNull(document.getData().get("Message")).toString());
+    private void addToFeedback(String txtName, String txtEmail, String txtMessage) {
 
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            Task<DocumentReference> documentReferenceTask = db.collection("Feedbacks").document("kRy8xpkMtZucDXZMmKIE").collection("Name")
-                    .add(feedbackMap)
-                    .addOnSuccessListener(documentReference -> Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId()))
-                    .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+        final HashMap<String, Object> feedbackMap = new HashMap<>();
+        feedbackMap.put("Name", txtName);
+        feedbackMap.put("Email", txtEmail);
+        feedbackMap.put("Message", txtMessage);
 
-        }
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Feedbacks").document("kRy8xpkMtZucDXZMmKIE").collection("Name")
+                .add(feedbackMap)
+                .addOnSuccessListener(documentReference -> {
+                    Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                    Toast.makeText(this, "Feedback added successfully", Toast.LENGTH_LONG).show();
+                })
+                .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+
+    }
 
 }
