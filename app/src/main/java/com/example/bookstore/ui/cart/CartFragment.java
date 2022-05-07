@@ -20,21 +20,18 @@ import java.util.ArrayList;
 
 public class CartFragment extends Fragment {
 
+    public long Total = 0;
+    public long ItemCount = 0;
     RecyclerView recyclerView;
     ArrayList<CartItem> CartArrayList;
     CartAdapter cartAdapter;
     FirebaseFirestore db;
     TextView cartItemCount;
     TextView cartTotalPrice;
-    public long Total = 0;
-    public int ItemCount = 0;
-
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
-
         db = FirebaseFirestore.getInstance();
         CartArrayList = new ArrayList<>();
 
@@ -47,13 +44,14 @@ public class CartFragment extends Fragment {
         cartItemCount = view.findViewById(R.id.cartItemCount);
         cartTotalPrice = view.findViewById(R.id.cartTotal);
 
+
         EventChangeListener();
         return view;
 
     }
 
 
-    private void EventChangeListener() {
+    public void EventChangeListener() {
 
         db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book").addSnapshotListener((value, error) -> {
 
@@ -66,20 +64,19 @@ public class CartFragment extends Fragment {
             for (DocumentChange dc : value.getDocumentChanges()) {
                 if (dc.getType() == DocumentChange.Type.ADDED) {
                     dc.getDocument().getData();
-                    Log.e("Firestore Error pakayayaya", String.valueOf(dc.getDocument().getData().get("price").getClass()));
-
+                    Log.d("Document Id", dc.getDocument().getId());
                     CartItem crt = dc.getDocument().toObject(CartItem.class);
                     crt.setDocumentId(dc.getDocument().getId());
                     CartArrayList.add(crt);
 
-                    ItemCount++;
-                    Total += (double) dc.getDocument().getData().get("price");
+                    ItemCount += (long) dc.getDocument().getData().get("Count");
+                    Total += (double) dc.getDocument().getData().get("price") * (long) dc.getDocument().getData().get("Count");
                 }
 
                 cartAdapter.notifyDataSetChanged();
             }
             cartItemCount.setText(String.valueOf(ItemCount));
-            cartTotalPrice.setText(String.valueOf(Total)+"$");
+            cartTotalPrice.setText(Total + "$");
 
         });
     }
