@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    app:cardCornerRadius="8dp"
-    app:strokeWidth="2dp"
-    app:strokeColor="#553f51b5"
     app:cardBackgroundColor="#eee"
-    app:cardElevation="8dp">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
+    app:strokeColor="#553f51b5"
+    app:strokeWidth="2dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="125dp"
+
         android:backgroundTint="#66F3EEED">
 
         <com.google.android.material.card.MaterialCardView
@@ -21,16 +23,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            app:strokeWidth="2dp"
-            app:strokeColor="#553f51b5"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
+            android:background="@drawable/layout_bg"
             app:cardCornerRadius="4dp"
             app:cardElevation="8dp"
-            android:background="@drawable/layout_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#553f51b5"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:id="@+id/cartItemImage"
@@ -57,29 +59,30 @@
 
         <TextView
             android:id="@+id/cartItemAuthor"
-            android:fontFamily="@font/roboto_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_bold"
             android:text="@string/cartItemAuthor"
+            android:textColor="#4D4D4D"
             app:layout_constraintStart_toEndOf="@+id/cartItemImageHolder"
             app:layout_constraintTop_toBottomOf="@+id/cartItemTitle" />
 
         <TextView
             android:id="@+id/cartItemPrice"
-            android:fontFamily="@font/roboto_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="16dp"
+            android:fontFamily="@font/roboto_bold"
             android:text="@string/cartItemPrice"
+            android:textColor="#5D4D4D"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cartItemImageHolder" />
 
 
         <ImageButton
-            android:tint="#755"
             android:id="@+id/cartItemDelete"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -88,12 +91,57 @@
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
             android:backgroundTint="#DC0000"
+
             android:contentDescription="@string/cartDeleteItemItem"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_delete_forever_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_baseline_delete_forever_24" />
+            app:srcCompat="@drawable/ic_baseline_delete_forever_24"
+            app:tint="#755" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="82dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cartItemIncrement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:text="+"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/cartItemCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:fontFamily="@font/roboto_bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cartItemIncrement"
+                app:layout_constraintStart_toEndOf="@+id/cartItemDecrement"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cartItemDecrement"
+                android:layout_width="39dp"
+                android:layout_height="40dp"
+                android:minWidth="0dp"
+                android:text="-"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -44,8 +44,8 @@
             android:id="@+id/cartItemCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="38dp"
-            android:layout_marginEnd="83dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="70dp"
             android:elevation="8dp"
             android:fontFamily="@font/roboto_bold"
             android:text="2"
@@ -58,12 +58,12 @@
             android:id="@+id/imageView"
             android:layout_width="63dp"
             android:layout_height="57dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="56dp"
-            android:src="@drawable/ic_baseline_cloud_queue_24"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="44dp"
+            android:src="@drawable/ic_baseline_turned_in_not_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="#dd2f41a5" />
+            app:tint="#9e9d24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

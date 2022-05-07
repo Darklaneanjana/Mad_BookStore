@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,8 +27,7 @@ public class CartFragment extends Fragment {
     TextView cartItemCount;
     TextView cartTotalPrice;
     public long Total = 0;
-    public int ItemCount = 0;
-
+    public long ItemCount = 0;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -46,6 +44,7 @@ public class CartFragment extends Fragment {
         recyclerView.setAdapter(cartAdapter);
         cartItemCount = view.findViewById(R.id.cartItemCount);
         cartTotalPrice = view.findViewById(R.id.cartTotal);
+
 
         EventChangeListener();
         return view;
@@ -66,20 +65,23 @@ public class CartFragment extends Fragment {
             for (DocumentChange dc : value.getDocumentChanges()) {
                 if (dc.getType() == DocumentChange.Type.ADDED) {
                     dc.getDocument().getData();
-                    Log.e("Firestore Error pakayayaya", String.valueOf(dc.getDocument().getData().get("price").getClass()));
+                    Log.e("Firestore Errorr", dc.getDocument().getId());
+
+                    Log.e("Firestore Errorr", String.valueOf(dc.getDocument().getData().get("Count").getClass()));
 
                     CartItem crt = dc.getDocument().toObject(CartItem.class);
                     crt.setDocumentId(dc.getDocument().getId());
                     CartArrayList.add(crt);
 
-                    ItemCount++;
-                    Total += (double) dc.getDocument().getData().get("price");
+                    ItemCount += (long) dc.getDocument().getData().get("Count");
+                    Total += (double) dc.getDocument().getData().get("price") * (long) dc.getDocument().getData().get("Count");
+
                 }
 
                 cartAdapter.notifyDataSetChanged();
             }
             cartItemCount.setText(String.valueOf(ItemCount));
-            cartTotalPrice.setText(String.valueOf(Total)+"$");
+            cartTotalPrice.setText(String.valueOf(Total) + "$");
 
         });
     }
