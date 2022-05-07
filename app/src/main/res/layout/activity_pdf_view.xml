@@ -45,7 +45,7 @@
 
     </RelativeLayout>
 
-     
+
 
     <!--ProgressBar :Show while pdf/book is loading from firebase-->
     <ProgressBar
