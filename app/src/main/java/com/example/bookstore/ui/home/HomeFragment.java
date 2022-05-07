@@ -49,10 +49,23 @@ public class HomeFragment extends Fragment {
             intent.putExtra("bookId", bookId);
             startActivity(intent);
         });
+        Button textView4 = binding.bookFourBtn;
+        textView4.setOnClickListener(v -> {
+            String bookId = "ksuO00nW4dQd6ZwfvRv3";
+            Intent intent = new Intent(getContext(), BookActivity.class);
+            intent.putExtra("bookId", bookId);
+            startActivity(intent);
+        });
+        Button textView5 = binding.bookFiveBtn;
+        textView5.setOnClickListener(v -> {
+            String bookId = "rkZ2oz9RFUTqulj9x7P3";
+            Intent intent = new Intent(getContext(), BookActivity.class);
+            intent.putExtra("bookId", bookId);
+            startActivity(intent);
+        });
 
 //        final TextView textView = binding.textHome;
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
         return root;
     }
 

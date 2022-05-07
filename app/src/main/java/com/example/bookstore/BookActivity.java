@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +28,7 @@ public class BookActivity extends AppCompatActivity {
     private static final String TAG = "EmailPassword";
     DocumentSnapshot document;
     String bookId;
+    double rating;
 
 
     @Override
@@ -45,6 +47,7 @@ public class BookActivity extends AppCompatActivity {
         TextView bookPrice = findViewById(R.id.bookPrice);
         TextView bookRating = findViewById(R.id.bookRating);
         TextView bookDescription = findViewById(R.id.bookDescription);
+        ImageView bookRatingStar = findViewById(R.id.bookRatingStar);
 
         DocumentReference docRef = FirebaseFirestore.getInstance().collection("Books").document(bookId);
         docRef.get().addOnCompleteListener(task -> {
@@ -58,6 +61,15 @@ public class BookActivity extends AppCompatActivity {
                     bookPrice.setText(Objects.requireNonNull(document.getData().get("Price")) + "$");
                     bookRating.setText(Objects.requireNonNull(document.getData().get("Ratings")).toString());
                     bookDescription.setText(Objects.requireNonNull(document.getData().get("Description")).toString());
+                    rating = (double) document.getData().get("Ratings");
+                    if (rating < 2) {
+                        bookRatingStar.setImageResource(R.drawable.ic_baseline_star_outline_24);
+                    }
+                    if (rating < 4) {
+                        bookRatingStar.setImageResource(R.drawable.ic_baseline_star_half_24);
+                    } else {
+                        bookRatingStar.setImageResource(R.drawable.ic_baseline_star_24);
+                    }
 
 
                     setCover(Objects.requireNonNull(document.getData().get("Image")).toString());
@@ -94,7 +106,10 @@ public class BookActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book")
                 .add(cartMap)
-                .addOnSuccessListener(documentReference -> Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId()))
+                .addOnSuccessListener(documentReference -> {
+                    Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                    Toast.makeText(this, "Book added to cart successfully", Toast.LENGTH_LONG).show();
+                })
                 .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
 
     }
