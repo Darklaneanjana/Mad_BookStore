@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -29,6 +30,7 @@ public class BookActivity extends AppCompatActivity {
     DocumentSnapshot document;
     String bookId;
     double rating;
+    int BookCount = 0;
 
 
     @Override
@@ -96,22 +98,46 @@ public class BookActivity extends AppCompatActivity {
 
     private void addToCart() {
 
-        final HashMap<String, Object> cartMap = new HashMap<>();
-        cartMap.put("Author", Objects.requireNonNull(document.getData().get("Author")).toString());
-        cartMap.put("Title", Objects.requireNonNull(document.getData().get("Title")).toString());
-        cartMap.put("BookId", bookId);
-        cartMap.put("Image", Objects.requireNonNull(document.getData().get("Image")).toString());
-        cartMap.put("price", Objects.requireNonNull(document.getData().get("Price")));
-        cartMap.put("Count", 1);
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book")
-                .add(cartMap)
-                .addOnSuccessListener(documentReference -> {
-                    Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                    Toast.makeText(this, "Book added to cart successfully", Toast.LENGTH_LONG).show();
-                })
-                .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+                .whereEqualTo("Title", "Dune")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            BookCount += 1;
+                            Log.e(TAG, "labba" + "labba");
+                            Log.e(TAG, document.getId() + " => " + document.getData());
+                        }
+                        if (BookCount == 0) {
+                            Log.e(TAG, "pakaya" + "pakaya");
+                            final HashMap<String, Object> cartMap = new HashMap<>();
+                            cartMap.put("Author", Objects.requireNonNull(Objects.requireNonNull(document.getData()).get("Author")).toString());
+                            cartMap.put("Title", Objects.requireNonNull(document.getData().get("Title")).toString());
+                            cartMap.put("BookId", bookId);
+                            cartMap.put("Image", Objects.requireNonNull(document.getData().get("Image")).toString());
+                            cartMap.put("price", Objects.requireNonNull(document.getData().get("Price")));
+                            cartMap.put("Count", 1);
+
+
+                            db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book")
+                                    .add(cartMap)
+                                    .addOnSuccessListener(documentReference -> {
+                                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                                        Toast.makeText(this, "Book added to cart successfully", Toast.LENGTH_LONG).show();
+                                    })
+                                    .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+                        } else {
+                            Log.e(TAG, "pakaya" + "pakaya");
+                            Toast.makeText(this, "Book is already in the cart", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.getException());
+
+                    }
+                });
+
 
     }
 
