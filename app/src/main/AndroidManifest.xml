@@ -11,21 +11,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookStore">
         <activity
-<<<<<<< Updated upstream
             android:name=".FeedbackActivity"
             android:exported="false" />
         <activity
             android:name=".BookActivity"
             android:exported="false" />
-=======
-            android:name=".MainActivity2"
-            android:exported="false" />
+
         <activity
             android:name=".SplashActivity"
             android:exported="false"
             android:label="@string/title_activity_splash"
             android:theme="@style/Platform.MaterialComponents.Light" />
->>>>>>> Stashed changes
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
