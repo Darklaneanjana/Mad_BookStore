@@ -11,6 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookStore">
         <activity
+
+            android:name=".AboutUsActivity"
+            android:exported="false" />
+        <activity
+
             android:name=".FeedbackActivity"
             android:exported="false" />
         <activity
