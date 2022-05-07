@@ -16,5 +16,12 @@
 
     </style>
 
+<style name="Theme.BookStore.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
+    <style name="Theme.BookStore.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.BookStore.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
