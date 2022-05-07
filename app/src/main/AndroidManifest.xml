@@ -19,6 +19,13 @@
         <activity
             android:name=".BookActivity"
             android:exported="false" />
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="false"
+            android:label="@string/title_activity_splash"
+            android:theme="@style/Platform.MaterialComponents.Light" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
