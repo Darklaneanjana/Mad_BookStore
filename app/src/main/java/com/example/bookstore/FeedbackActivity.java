@@ -25,6 +25,7 @@ public class FeedbackActivity extends AppCompatActivity {
     private EditText  message;
     private TextView viewMessage, viewName;
     DocumentSnapshot document;
+    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +54,26 @@ public class FeedbackActivity extends AppCompatActivity {
             }
         });
 
+        DocumentReference docRef1 = FirebaseFirestore.getInstance().collection("Users").document(currentUser);
+        docRef1.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                document = task.getResult();
+                if (document.exists()) {
+                    Log.d(TAG, "DocumentSnapshot data: " + Objects.requireNonNull(document.getData()));
+
+                    userName=document.getData().get("Name").toString();
+                }else {
+                    Log.d(TAG, "No such document");
+                }
+            } else {
+                Log.d(TAG, "get failed with ", task.getException());
+            }
+        });
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txtName = currentUser;
+                String txtName = userName;
                 String txtMessage = message.getText().toString();
 
                 Button btn_send = findViewById(R.id.btn_send);
