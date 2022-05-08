@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".ui.FeedbackActivity">
+    android:padding="16dp">
 
 
     <EditText
@@ -36,25 +35,29 @@
 
     <TextView
         android:id="@+id/viewMessage"
-        android:layout_width="289dp"
-        android:layout_height="114dp"
+        android:layout_width="383dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/viewName"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="113dp"
-        android:text="TextView" />
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="12dp"
+        android:text="It's fun but very frustrating. The controls are pretty had since there is no customization and the movement buttons are way too smail and close together. It stops you from actually playing It's fun but very frustrating. The controls are pretty had since there is no customization and the movement buttons are way too smail and close together. It stops you from actually playing It's fun but very frustrating. The controls are pretty had since there is no customization and the movement buttons are way too smail and close together. It stops you from actually playing"
+        android:textColor="#200909" />
 
     <TextView
         android:id="@+id/viewName"
-        android:layout_width="120dp"
-        android:layout_height="43dp"
+        android:layout_width="178dp"
+        android:layout_height="20dp"
         android:layout_below="@+id/btn_send"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="41dp"
-        android:layout_marginEnd="251dp"
-        android:text="TextView" />
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="217dp"
+        android:text="Tharushi Perera"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView5"
@@ -71,5 +74,27 @@
         android:textColor="#000000"
         android:textSize="45sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="114dp"
+        android:layout_height="23dp"
+        android:layout_below="@+id/viewMessage"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="267dp"
+        android:text="Lakshika de"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="362dp"
+        android:layout_height="145dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="38dp"
+        android:text="It's fun but very frustrating. The controls are pretty had since there is no customization and the movement buttons are way too smail and close together. It stops you from actually playingIt's fun but very frustrating. The controls are pretty had since there is no customization and the movement buttons are way too smail and close together. It stops you from actually playing"
+        android:textColor="#200909" />
 
 </RelativeLayout>
