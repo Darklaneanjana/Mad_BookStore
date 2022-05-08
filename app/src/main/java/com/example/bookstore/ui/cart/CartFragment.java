@@ -50,17 +50,19 @@ public class CartFragment extends Fragment {
 
     }
 
-
+    //Getting Book list for the cart
     public void EventChangeListener() {
-
+        //reference for the cart in database
         db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book").addSnapshotListener((value, error) -> {
 
             if (error != null) {
                 Log.e("Firestore Error", error.getMessage());
                 return;
             }
+//            asserting  is not null
             assert value != null;
             ItemCount = 0;
+            //looping through the document change and adding them in the array
             for (DocumentChange dc : value.getDocumentChanges()) {
                 if (dc.getType() == DocumentChange.Type.ADDED) {
                     dc.getDocument().getData();
@@ -69,10 +71,11 @@ public class CartFragment extends Fragment {
                     crt.setDocumentId(dc.getDocument().getId());
                     CartArrayList.add(crt);
 
+//                  Setting ItemCount and Total in cart fragment
                     ItemCount += (long) dc.getDocument().getData().get("Count");
                     Total += (double) dc.getDocument().getData().get("price") * (long) dc.getDocument().getData().get("Count");
                 }
-
+                //this will always listens for any changes in cart collection and make change the cart automatically.
                 cartAdapter.notifyDataSetChanged();
             }
             cartItemCount.setText(String.valueOf(ItemCount));

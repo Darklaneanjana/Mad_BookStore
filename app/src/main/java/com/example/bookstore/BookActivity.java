@@ -97,7 +97,7 @@ public class BookActivity extends AppCompatActivity {
     }
 
     private void addToCart() {
-
+        //THIS WILL ONLY LET THE BOOK TO ADD TO CART IF THE BOOK IS NOT IN THE CART.
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         BookCount = 0;
         db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book")
@@ -109,7 +109,9 @@ public class BookActivity extends AppCompatActivity {
                             BookCount += 1;
                             Log.e(TAG, document.getId() + " => " + document.getData());
                         }
+                        //check if the book is already in the cart
                         if (BookCount == 0) {
+                            // if cart is not in the cart, book will be inserted in to the cart
                             final HashMap<String, Object> cartMap = new HashMap<>();
                             cartMap.put("Author", Objects.requireNonNull(Objects.requireNonNull(document.getData()).get("Author")).toString());
                             cartMap.put("Title", Objects.requireNonNull(document.getData().get("Title")).toString());
@@ -117,7 +119,6 @@ public class BookActivity extends AppCompatActivity {
                             cartMap.put("Image", Objects.requireNonNull(document.getData().get("Image")).toString());
                             cartMap.put("price", Objects.requireNonNull(document.getData().get("Price")));
                             cartMap.put("Count", 1);
-
 
                             db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book")
                                     .add(cartMap)
