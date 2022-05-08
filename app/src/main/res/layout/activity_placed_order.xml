@@ -7,6 +7,7 @@
     tools:context=".PlacedOrderActivity">
 
     <TextView
+        android:id="@+id/viewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
@@ -21,7 +22,7 @@
         tools:layout_editor_absoluteY="105dp" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/viewImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,6 +34,7 @@
         app:srcCompat="@drawable/ty_png" />
 
     <TextView
+        android:id="@+id/viewMsg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
