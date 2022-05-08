@@ -4,6 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".AboutUsActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="104dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About Us"
+            android:textAlignment="center"
+            android:textColor="@color/colorOrange"
+            android:textSize="50dp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            tools:layout_editor_absoluteX="157dp"
+            tools:layout_editor_absoluteY="260dp" />
+
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:textAlignment="center"
+            app:srcCompat="@drawable/au"
+            tools:layout_editor_absoluteX="48dp"
+            tools:layout_editor_absoluteY="47dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="307dp"
+            android:fontFamily="cursive"
+            android:justificationMode="none"
+            android:layoutDirection="inherit"
+            android:padding="5dp"
+            android:text="Welcome to Book Bank, your number one source for all books. We're dedicated to giving you the very best of service, with a focus on Simplicity, security and responsive. We serve customers all in our island, and we ensure user data are well-protected. We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions, suggestions or comments, please don't hesitate to contact us."
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/toCallBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/white"
+            android:text="+94771357144"
+            android:textAlignment="viewStart"
+            android:textColor="@color/teal_200"
+            app:rippleColor="#FFFFFF" />
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

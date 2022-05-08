@@ -37,4 +37,5 @@
     <string name="previous">Previous</string>
     <string name="title_activity_slpash">SlpashActivity</string>
     <string name="SplashBtn">Splash</string>
+    <string name="copy_right" translatable="false">Copyrights © %1$d</string>
 </resources>

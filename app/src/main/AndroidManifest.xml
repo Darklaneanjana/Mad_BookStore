@@ -19,8 +19,6 @@
         <activity
             android:name=".BookActivity"
             android:exported="false" />
-            android:name=".MainActivity2"
-            android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="false"
