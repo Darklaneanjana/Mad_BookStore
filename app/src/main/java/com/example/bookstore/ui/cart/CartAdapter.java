@@ -68,36 +68,36 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             // Handle any errors
         });
     }
-
+//FUNCTION FOR GETTING THE BOOK COUNT IN THE CART
     @Override
     public int getItemCount() {
         return CartArrayList.size();
     }
 
+    //FUNCTION FOR INCREASING THE BOOK AMOUNT IN THE CART
     private void incrementCartItem(String id, long count) {
-
+        //CHECK WEATHER THE BOOK IS IN RANGE (1-10)
         long countItem = count;
         if (countItem >= 10.0) {
             Toast.makeText(context, "Must be less than ten books", Toast.LENGTH_LONG).show();
         } else {
-
+//          INCREMENT THE AMOUNT AND UPDATE THE DATABASE ACCORDINGLY
             countItem++;
-            // Set the "isCapital" field of the city 'DC'
             FirebaseFirestore.getInstance().collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book").document(id)
                     .update("Count", countItem)
                     .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully updated!"))
                     .addOnFailureListener(e -> Log.w(TAG, "Error updating document", e));
         }
     }
-
+    //FUNCTION FOR DECREASING THE BOOK AMOUNT IN THE CART
     private void decrementCartItem(String id, long count) {
+        //CHECK WEATHER THE BOOK IS IN RANGE (1-10)
         long countItem = count;
         if (countItem <= 1.0) {
             Toast.makeText(context, "Must be more than one book", Toast.LENGTH_LONG).show();
         } else {
-
+//          DECREMENT THE AMOUNT AND UPDATE THE DATABASE ACCORDINGLY
             countItem--;
-            // Set the "isCapital" field of the city 'DC'
             FirebaseFirestore.getInstance().collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book").document(id)
                     .update("Count", countItem)
                     .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully updated!"))
