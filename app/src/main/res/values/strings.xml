@@ -26,5 +26,15 @@
     <string name="cartItemAuthor">Author:</string>
     <string name="cartItemPrice">Price:</string>
     <string name="logout">logout</string>
+    <string name="minus">-</string>
+    <string name="add">+</string>
     <string name="send">Send</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="title_activity_slpash">SlpashActivity</string>
+    <string name="SplashBtn">Splash</string>
 </resources>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/cartback"
     tools:context=".ui.cart.CartFragment">
 
 
@@ -21,13 +22,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="65dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="164dp"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/cart"
@@ -42,8 +44,8 @@
             android:id="@+id/cartItemCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="68dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="70dp"
             android:elevation="8dp"
             android:fontFamily="@font/roboto_bold"
             android:text="2"
@@ -56,12 +58,12 @@
             android:id="@+id/imageView"
             android:layout_width="63dp"
             android:layout_height="57dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="42dp"
-            android:src="@drawable/ic_baseline_cloud_queue_24"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="44dp"
+            android:src="@drawable/ic_baseline_turned_in_not_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="#dd2f41a5" />
+            app:tint="#9e9d24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -69,13 +71,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/layout_bg"
-        app:strokeWidth="2dp"
-        app:strokeColor="#ffebee"
         app:cardCornerRadius="30dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#ffebee"
+        app:strokeWidth="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout5"

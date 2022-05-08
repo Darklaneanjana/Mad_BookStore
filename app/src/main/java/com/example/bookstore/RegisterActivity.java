@@ -1,6 +1,5 @@
 package com.example.bookstore;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +28,8 @@ public class RegisterActivity extends AppCompatActivity {
     private Button register;
     private Button back;
 
+    private Button splashBtn;
+
 
 
     @Override
@@ -45,6 +46,18 @@ public class RegisterActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         register = findViewById(R.id.registerBtn);
         back = findViewById(R.id.backToLogin);
+        splashBtn =findViewById(R.id.splashBtn);
+
+        splashBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(RegisterActivity.this ,MainActivity2.class);
+                startActivity(intent);
+            }
+        });
+
+
         back.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

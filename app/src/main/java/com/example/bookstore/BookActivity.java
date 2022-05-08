@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -29,6 +30,8 @@ public class BookActivity extends AppCompatActivity {
     DocumentSnapshot document;
     String bookId;
     double rating;
+    int BookCount = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +65,7 @@ public class BookActivity extends AppCompatActivity {
                     bookDescription.setText(Objects.requireNonNull(document.getData().get("Description")).toString());
                     rating = (double) document.getData().get("Ratings");
                     if (rating < 2) {
-                        bookRatingStar.setImageResource(R.drawable.ic_baseline_star_border_24);
+                        bookRatingStar.setImageResource(R.drawable.ic_baseline_star_outline_24);
                     }
                     if (rating < 4) {
                         bookRatingStar.setImageResource(R.drawable.ic_baseline_star_half_24);
@@ -95,21 +98,43 @@ public class BookActivity extends AppCompatActivity {
 
     private void addToCart() {
 
-        final HashMap<String, Object> cartMap = new HashMap<>();
-        cartMap.put("Author", Objects.requireNonNull(Objects.requireNonNull(document.getData()).get("Author")).toString());
-        cartMap.put("Title", Objects.requireNonNull(document.getData().get("Title")).toString());
-        cartMap.put("BookId", bookId);
-        cartMap.put("Image", Objects.requireNonNull(document.getData().get("Image")).toString());
-        cartMap.put("price", Objects.requireNonNull(document.getData().get("Price")));
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        BookCount = 0;
         db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book")
-                .add(cartMap)
-                .addOnSuccessListener(documentReference -> {
-                    Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                    Toast.makeText(this, "Book added to cart successfully", Toast.LENGTH_LONG).show();
-                })
-                .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+                .whereEqualTo("BookId", bookId)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            BookCount += 1;
+                            Log.e(TAG, document.getId() + " => " + document.getData());
+                        }
+                        if (BookCount == 0) {
+                            final HashMap<String, Object> cartMap = new HashMap<>();
+                            cartMap.put("Author", Objects.requireNonNull(Objects.requireNonNull(document.getData()).get("Author")).toString());
+                            cartMap.put("Title", Objects.requireNonNull(document.getData().get("Title")).toString());
+                            cartMap.put("BookId", bookId);
+                            cartMap.put("Image", Objects.requireNonNull(document.getData().get("Image")).toString());
+                            cartMap.put("price", Objects.requireNonNull(document.getData().get("Price")));
+                            cartMap.put("Count", 1);
+
+
+                            db.collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book")
+                                    .add(cartMap)
+                                    .addOnSuccessListener(documentReference -> {
+                                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                                        Toast.makeText(this, "Book added to cart successfully", Toast.LENGTH_LONG).show();
+                                    })
+                                    .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+                        } else {
+                            Toast.makeText(this, "Book is already in the cart", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.getException());
+
+                    }
+                });
+
 
     }
 
