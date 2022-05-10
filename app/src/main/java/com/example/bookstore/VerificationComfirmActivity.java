@@ -1,18 +1,15 @@
 package com.example.bookstore;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Html;
 import android.text.TextWatcher;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class VerificationComfirmActivity extends AppCompatActivity {

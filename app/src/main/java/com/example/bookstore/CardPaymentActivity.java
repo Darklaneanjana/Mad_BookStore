@@ -74,8 +74,8 @@ public class CardPaymentActivity extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        db.collection("Payments").document(currentUser)
-                .set(paymentMap)
+        db.collection("Payments").document("i3hppycGj4kgTByD7C6e").collection(currentUser)
+                .add(paymentMap)
                 .addOnSuccessListener(documentReference -> {
 
                     Toast.makeText(this, "Verify your Payment", Toast.LENGTH_LONG).show();

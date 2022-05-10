@@ -10,6 +10,7 @@
         android:id="@+id/viewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/roboto_bold"
         android:text="Your Order has been Placed"
         android:textAlignment="center"
@@ -19,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="105dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/viewImg"
@@ -37,7 +38,7 @@
         android:id="@+id/viewMsg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="88dp"
         android:fontFamily="cursive"
         android:text="Thank you for purchasing our books\n Read more worry less."
         android:textAlignment="center"
@@ -46,6 +47,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/toHomebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="8dp"
+        android:text="Done"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewMsg" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
