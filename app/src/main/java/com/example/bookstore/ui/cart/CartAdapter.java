@@ -3,6 +3,7 @@ package com.example.bookstore.ui.cart;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookstore.R;
@@ -85,7 +87,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             // Set the "isCapital" field of the city 'DC'
             FirebaseFirestore.getInstance().collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book").document(id)
                     .update("Count", countItem)
-                    .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully updated!"))
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(context, "Book count increased successfully", Toast.LENGTH_LONG).show();
+                        notifyDataSetChanged();
+
+
+
+
+//                        CartFragment cls2 = new CartFragment();
+//                        cls2.refresh();
+
+                        Log.d(TAG, "DocumentSnapshot successfully updated!");
+                    })
                     .addOnFailureListener(e -> Log.w(TAG, "Error updating document", e));
         }
     }
@@ -100,7 +113,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             // Set the "isCapital" field of the city 'DC'
             FirebaseFirestore.getInstance().collection("Cart").document("WJhcfXZpxSYXqSQqR2ymcpY7fpP2").collection("Book").document(id)
                     .update("Count", countItem)
-                    .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully updated!"))
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(context, "Book count decreased successfully", Toast.LENGTH_LONG).show();
+                        notifyDataSetChanged();
+                        Log.d(TAG, "DocumentSnapshot successfully updated!");
+                    })
                     .addOnFailureListener(e -> Log.w(TAG, "Error updating document", e));
         }
     }
