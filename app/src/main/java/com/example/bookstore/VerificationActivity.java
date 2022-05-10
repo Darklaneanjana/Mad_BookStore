@@ -30,14 +30,12 @@ public class VerificationActivity extends AppCompatActivity {
         generate_otp = findViewById(R.id.generate_otp);
         mobile_number = findViewById(R.id.mobile_number);
 
-
-        OTP.setText(HtmlCompat.fromHtml(getResources(""),HtmlCompat.FROM_HTML_MODE_LEGACY));
         generate_otp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(mobile_number.getText().toString().equals(""))
                     Toast.makeText(getApplicationContext(),"Please enter the mobile no.",Toast.LENGTH_SHORT).show();
-                else if(mobile_number.getText().length()<10)
+                else if(mobile_number.getText().length()<9)
                     Toast.makeText(getApplicationContext(),"Please enter correct mobile no.",Toast.LENGTH_SHORT).show();
                 else{
                     Intent intent = new Intent(getApplicationContext(),VerificationComfirmActivity.class);

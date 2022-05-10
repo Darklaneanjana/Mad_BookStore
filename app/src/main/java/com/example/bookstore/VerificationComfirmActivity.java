@@ -3,19 +3,23 @@ package com.example.bookstore;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class VerificationComfirmActivity extends AppCompatActivity {
 
     TextView otp;
     EditText otp_box_1,otp_box_2,otp_box_3,otp_box_4,otp_box_5,otp_box_6;
+    String otpValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,9 @@ public class VerificationComfirmActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_verification_comfirm);
+
+        Intent intent = getIntent();
+        otpValue = intent.getStringExtra("otp_number");
 
         otp = findViewById(R.id.otp);
         otp_box_1 = findViewById(R.id.otp_box_1);
@@ -128,6 +135,11 @@ public class VerificationComfirmActivity extends AppCompatActivity {
                 }
             }
         });
+        Button send = findViewById(R.id.verify);
 
+        send.setOnClickListener(v->{
+            Intent intent1 = new Intent( getApplicationContext(),PlacedOrderActivity.class);
+            startActivity(intent1);
+        });
     }
 }

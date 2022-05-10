@@ -44,17 +44,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/otp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:fontFamily="serif"
-                    android:lineSpacingExtra="6dp"
-                    android:textAlignment="center"
-                    android:textSize="16sp" />
-
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -62,7 +51,7 @@
                     android:fontFamily="serif"
                     android:text="Enter Mobile Number"
                     android:textAlignment="center"
-                    android:textColor="#a3a3a3"
+                    android:textColor="#050D37"
                     android:textSize="16sp" />
 
                 <LinearLayout
