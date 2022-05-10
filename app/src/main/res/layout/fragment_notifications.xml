@@ -24,15 +24,19 @@
         android:id="@+id/toFeedbackBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="252dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="90dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/toThankYou"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="thank you"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="191dp" />
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="244dp"
+        android:text="Payment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toFeedbackBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

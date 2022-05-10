@@ -17,7 +17,6 @@
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:inputType = "numberPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +37,8 @@
         android:layout_height="42dp"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.644"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,48 +50,56 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="32dp"
-        android:text="Expiry*"
+        android:text="Year*"
         android:textColor="#060D37"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardNum" />
 
     <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/year"
+        android:layout_width="192dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        tools:layout_editor_absoluteX="29dp" />
+        android:maxLength="4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="19dp"
         android:text="CVC*"
         android:textColor="#060D37"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
-        tools:layout_editor_absoluteX="282dp" />
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="493dp" />
 
     <EditText
         android:id="@+id/cvc"
         android:layout_width="123dp"
         android:layout_height="46dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="numberPassword"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTextDate"
-        tools:layout_editor_absoluteX="271dp" />
+        android:maxLength="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <Button
         android:id="@+id/comfirmBtn"
         android:layout_width="289dp"
         android:layout_height="43dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="44dp"
         android:text="Comfirm"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvc" />
+        app:layout_constraintTop_toBottomOf="@+id/cvc"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -102,5 +110,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:srcCompat="@drawable/visa_master_removebg_preview" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="32dp"
+        android:text="Month*"
+        android:textColor="#060D37"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/cardNum" />
+
+    <EditText
+        android:id="@+id/month"
+        android:layout_width="128dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="2"
+        app:layout_constraintStart_toEndOf="@+id/year"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

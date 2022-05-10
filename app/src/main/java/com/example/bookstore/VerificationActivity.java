@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class VerificationActivity extends AppCompatActivity {
 
-    TextView otp;
+    TextView OTP;
     Button generate_otp;
     EditText mobile_number;
 
@@ -26,12 +26,12 @@ public class VerificationActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_verification);
 
-        otp = findViewById(R.id.otp);
+        OTP = findViewById(R.id.otp);
         generate_otp = findViewById(R.id.generate_otp);
         mobile_number = findViewById(R.id.mobile_number);
 
 
-        otp.setText(HtmlCompat.fromHtml(getResources().getString(R.string.otp),HtmlCompat.FROM_HTML_MODE_LEGACY));
+        OTP.setText(HtmlCompat.fromHtml(getResources(""),HtmlCompat.FROM_HTML_MODE_LEGACY));
         generate_otp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

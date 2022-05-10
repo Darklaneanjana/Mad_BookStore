@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.bookstore.BookActivity;
 import com.example.bookstore.FeedbackActivity;
 import com.example.bookstore.PlacedOrderActivity;
+import com.example.bookstore.SelectPaymentActivity;
 import com.example.bookstore.databinding.FragmentNotificationsBinding;
 
 public class NotificationsFragment extends Fragment {
@@ -41,7 +42,7 @@ public class NotificationsFragment extends Fragment {
         Button textView2 = binding.toThankYou;
         textView2.setOnClickListener(v -> {
             // String bookId = "Lfuk2Z5AJxUExtIQlUoL";
-            Intent intent = new Intent(getContext(), PlacedOrderActivity.class);
+            Intent intent = new Intent(getContext(), SelectPaymentActivity.class);
             //intent.putExtra("bookId", bookId);
             startActivity(intent);
 
