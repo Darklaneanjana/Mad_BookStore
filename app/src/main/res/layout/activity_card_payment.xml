@@ -17,6 +17,7 @@
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:inputType = "numberPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,7 +75,7 @@
         tools:layout_editor_absoluteX="282dp" />
 
     <EditText
-        android:id="@+id/editTextNumberPassword"
+        android:id="@+id/cvc"
         android:layout_width="123dp"
         android:layout_height="46dp"
         android:ems="10"
@@ -90,7 +91,7 @@
         android:layout_marginTop="100dp"
         android:text="Comfirm"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/cvc" />
 
     <ImageView
         android:id="@+id/imageView3"
