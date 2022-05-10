@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.bookstore.AboutUsActivity;
 import com.example.bookstore.BookActivity;
+import com.example.bookstore.DeliveryActivity;
 import com.example.bookstore.FeedbackActivity;
 import com.example.bookstore.databinding.FragmentNotificationsBinding;
 
@@ -41,6 +42,14 @@ public class NotificationsFragment extends Fragment {
         textView2.setOnClickListener(v -> {
             // String bookId = "Lfuk2Z5AJxUExtIQlUoL";
             Intent intent = new Intent(getContext(), AboutUsActivity.class);
+            //intent.putExtra("bookId", bookId);
+            startActivity(intent);
+        });
+
+        Button textView3 = binding.toDeliverybtn;
+        textView3.setOnClickListener(v -> {
+            // String bookId = "Lfuk2Z5AJxUExtIQlUoL";
+            Intent intent = new Intent(getContext(), DeliveryActivity.class);
             //intent.putExtra("bookId", bookId);
             startActivity(intent);
         });

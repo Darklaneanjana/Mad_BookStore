@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookStore">
         <activity
+            android:name=".DeliveryViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DeliveryActivity"
+            android:exported="false" />
+        <activity
             android:name=".AboutUsActivity"
             android:exported="false" />
         <activity
