@@ -135,7 +135,7 @@ public class VerificationComfirmActivity extends AppCompatActivity {
         Button send = findViewById(R.id.verify);
 
         send.setOnClickListener(v->{
-            Intent intent1 = new Intent( getApplicationContext(),PlacedOrderActivity.class);
+            Intent intent1 = new Intent( getApplicationContext(),ThanksActivity.class);
             startActivity(intent1);
         });
     }
