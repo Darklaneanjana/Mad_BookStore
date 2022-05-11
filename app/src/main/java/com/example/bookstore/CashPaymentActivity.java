@@ -29,8 +29,8 @@ public class CashPaymentActivity extends AppCompatActivity {
                 .add(paymentMap)
                 .addOnSuccessListener(documentReference -> {
                     Toast.makeText(this, "Verify your Payment", Toast.LENGTH_LONG).show();
-                    Intent intent1= new Intent( getApplicationContext(),ThanksActivity.class);
-                    startActivity(intent1);
+                    Intent intent = new Intent( getApplicationContext(),ThanksActivity.class);
+                    startActivity(intent);
                 })
                 .addOnFailureListener(e -> Log.w(TAG, "Can't get payment", e));
     }
