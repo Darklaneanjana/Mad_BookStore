@@ -1,5 +1,6 @@
 package com.example.bookstore.ui.cart;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +36,8 @@ public class CartFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
         db = FirebaseFirestore.getInstance();
         CartArrayList = new ArrayList<>();
+
+
 
 
         recyclerView = view.findViewById(R.id.recyclerView1);
@@ -79,5 +83,12 @@ public class CartFragment extends Fragment {
             cartTotalPrice.setText(Total + "$");
 
         });
+    }
+    public void refresh(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        if (Build.VERSION.SDK_INT >= 26) {
+            ft.setReorderingAllowed(false);
+        }
+        ft.detach(this).attach(this).commit();
     }
 }
