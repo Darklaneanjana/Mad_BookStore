@@ -36,10 +36,7 @@ public class HomeActivity extends FragmentActivity {
         com.example.bookstore.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        Button refresh = findViewById(R.id.refresh);
-//        refresh.setOnClickListener(view1 -> {
-//            cartFragment.refresh();
-//        });
+
 
         Button logout = findViewById(R.id.logout);
         logout.setOnClickListener(v -> {

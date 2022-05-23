@@ -33,6 +33,8 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
 
+
+
         Button textView2 = binding.bookTwoBtn;
         textView2.setOnClickListener(v -> {
             String bookId = "akW6ttqrKvS0ueyGopM2";
